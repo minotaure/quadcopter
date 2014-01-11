@@ -23,8 +23,8 @@
 
 //Choose how many channels you have available (6, 8 or 10)
 
-//#define LASTCHANNEL 6
-#define LASTCHANNEL 8
+#define LASTCHANNEL 6
+//#define LASTCHANNEL 8
 //#define LASTCHANNEL 10
 
 // Uncomment only one of the following receiver types depending on the type you are using
@@ -35,11 +35,11 @@
 //#include <Receiver_HWPPM.h> // for AeroQuad shield v1.x with Arduino Mega and shield v2.x with hardware mod                       
                               
 //PWM receivers
-//#include <Receiver_MEGA.h>   // for AeroQuad shield v1.x with Arduino Mega and shield v2.x using a standard PWM receiver
+#include <Receiver_MEGA.h>   // for AeroQuad shield v1.x with Arduino Mega and shield v2.x using a standard PWM receiver
 //#include <Receiver_328p.h> // for AeroQuad shield v1.x with Arduino Due/Uno and mini shield v1.0 using a standard PWM receiver
 
 //Futaba sBus
-#define sBus // for sBus receiver
+//#define sBus // for sBus receiver
 
 // -------------  End of configuration ----------------- //
 

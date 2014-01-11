@@ -22,7 +22,12 @@
 
 #include <AQMath.h>
 #include <Device_I2C.h>
-#include <Gyroscope_ITG3200.h>
+
+#ifndef ITG3200_ADDRESS_ALTERNATE
+  #define ITG3200_ADDRESS_ALTERNATE
+#endif
+
+#include <Gyroscope_ITG3200_9DOF.h>
 #include <GlobalDefined.h>
 
 unsigned long timer;
