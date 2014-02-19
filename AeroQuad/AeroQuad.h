@@ -249,6 +249,17 @@ void reportVehicleState();
 //////////////////////////////////////////////////////
 
 /**
+ * Paint with servo
+ */
+#if defined (PaintServo)
+  #define PAINT_SERVO_UP 160
+  #define PAINT_SERVO_DOWN 70
+  int paintServoPosition = PAINT_SERVO_UP;
+#endif
+  //////////////////////////////////////////////////////
+
+
+/**
  * EEPROM global section
  */
 typedef struct {

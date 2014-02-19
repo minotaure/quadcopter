@@ -113,8 +113,8 @@
 // *******************************************************************************************************************************
 // Define how many channels are connected from your R/C receiver
 // *******************************************************************************************************************************
-//#define LASTCHANNEL 6
-#define LASTCHANNEL 8
+#define LASTCHANNEL 6
+//#define LASTCHANNEL 8
 //#define LASTCHANNEL 10 // EXPERIMENTAL only tested with ReceiverSBUS on AQ32, test extensively before using other boards/receiver types
 
 
@@ -151,8 +151,10 @@
 // Please note that you will need to have battery connected to power on servos with v2.0 shield
 // For more information please refer to http://aeroquad.com/showwiki.php?title=Camera+Stabilization
 // *******************************************************************************************************************************
-#define CameraControl
+//#define CameraControl
 //#define CameraTXControl  // need to have CameraControl to work
+
+#define PaintServo
 
 //
 // *******************************************************************************************************************************

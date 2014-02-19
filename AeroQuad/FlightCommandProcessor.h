@@ -242,8 +242,8 @@ void processZeroThrottleFunctionFromReceiverCommand() {
  */
 void readPilotCommands() {
 
-  readReceiver(); 
-  
+  readReceiver();
+
   if (receiverCommand[THROTTLE] < MINCHECK) {
     processZeroThrottleFunctionFromReceiverCommand();
   }
@@ -267,6 +267,22 @@ void readPilotCommands() {
       previousFlightMode = flightMode;
     }
 
+  #if defined (PaintServo)
+    if (receiverCommand[AUX1] > 1500) {
+        if (paintServoPosition != PAINT_SERVO_DOWN) {
+          SERIAL_PRINTLN("Servo DOWN");
+          paintServoPosition = PAINT_SERVO_DOWN;
+          servoPaint.write(paintServoPosition);
+        }
+    }
+    else {
+        if (paintServoPosition != PAINT_SERVO_UP) {
+          SERIAL_PRINTLN("Servo UP");
+          paintServoPosition = PAINT_SERVO_UP;
+          servoPaint.write(paintServoPosition);
+        }
+    }
+  #endif
 
   #if defined AltitudeHoldBaro || defined AltitudeHoldRangeFinder
     processAltitudeHoldStateFromReceiverCommand();

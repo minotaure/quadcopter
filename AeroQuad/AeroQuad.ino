@@ -333,6 +333,11 @@
   #include <AQ_SoftModem.h>
 #endif
 
+#if defined(PaintServo)
+    #include <Servo.h>
+    Servo servoPaint;
+#endif
+
 
 // Include this last as it contains objects from above declarations
 #include "AltitudeControlProcessor.h"
@@ -353,6 +358,9 @@
 
 
 
+
+
+
 /*******************************************************************
  * Main setup function, called one time at bootup
  * initialize all system and sub system of the
@@ -362,6 +370,8 @@ void setup() {
   SERIAL_BEGIN(BAUD);
   pinMode(LED_Green, OUTPUT);
   digitalWrite(LED_Green, LOW);
+  
+  SERIAL_PRINTLN("Hello world");
 
   initCommunication();
   
@@ -433,6 +443,10 @@ void setup() {
   #if defined(CameraControl)
     initializeCameraStabilization();
     vehicleState |= CAMERASTABLE_ENABLED;
+  #endif
+
+  #if defined(PaintServo)
+    servoPaint.attach(11);
   #endif
 
   #if defined(MAX7456_OSD)
