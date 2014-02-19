@@ -244,6 +244,33 @@ void readPilotCommands() {
 
   readReceiver();
 
+  #if defined (FailSafe)
+    isNewCommand = false;
+    for (byte channel = 0; channel < LASTCHANNEL; channel++) {
+        if (receiverCommand[channel] != lastCommand[channel]) {
+          isNewCommand = true;
+          break;
+        }
+    }
+    if (isNewCommand) {
+      currentConstantCommandStream = 0;
+      for (byte channel = 0; channel < LASTCHANNEL; channel++) {
+        lastCommand[channel] = receiverCommand[channel];
+      }
+      if (transmissionLost) {
+        transmissionLost = false;
+        SERIAL_PRINTLN("Transmission resumed");
+      }
+    }
+    else if (!transmissionLost) {
+      currentConstantCommandStream++;
+      if (currentConstantCommandStream > MAX_CONSTANT_STREAM_FOR_CONNEXION_LOST) {
+        transmissionLost = true;
+        SERIAL_PRINTLN("Transmission lost");
+      }
+    }
+  #endif
+
   if (receiverCommand[THROTTLE] < MINCHECK) {
     processZeroThrottleFunctionFromReceiverCommand();
   }

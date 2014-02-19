@@ -404,6 +404,7 @@ void setup() {
   }
   setupFourthOrder();
   initSensorsZeroFromEEPROM();
+
   
   // Integral Limit for attitude mode
   // This overrides default set in readEEPROM()
@@ -447,6 +448,7 @@ void setup() {
 
   #if defined(PaintServo)
     servoPaint.attach(11);
+    servoPaint.write(paintServoPosition);
   #endif
 
   #if defined(MAX7456_OSD)

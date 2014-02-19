@@ -179,6 +179,35 @@ void processCalibrateESC()
  }
 #endif
 
+#if defined(FailSafe)
+  void processFailSafeThrottleAdjustment() {
+    if (transmissionLost) {
+      if (failSafeStartThrottle == 0) {  // init battery monitor throttle correction!
+        failSafeStartTime = millis();
+        if (throttle < failSafeThrottleTarget) {
+          failSafeStartThrottle = failSafeThrottleTarget;
+        }
+        else {
+          failSafeStartThrottle = throttle; 
+        }
+      }
+      int failSafeThrottle = map(millis()-failSafeStartTime, 0, failSafeGoingDownTime, failSafeStartThrottle, failSafeThrottleTarget);
+      if (failSafeThrottle < failSafeThrottleTarget) {
+        failSafeThrottle = failSafeThrottleTarget;
+      }
+      if (throttle < failSafeThrottle) {
+        failSafeThrottleCorrection = 0;
+      }
+      else {
+        failSafeThrottleCorrection = failSafeThrottle - throttle;
+      }
+    } else {
+      failSafeThrottleCorrection = 0;
+    }
+  }
+#endif 
+
+
 
 /**
  * processThrottleCorrection
@@ -201,6 +230,10 @@ void processThrottleCorrection() {
   #endif
   #if defined BattMonitorAutoDescent
     throttleAdjust += batteyMonitorThrottleCorrection;
+  #endif
+  #if defined FailSafe
+    if (transmissionLost)
+      throttleAdjust += failSafeThrottleCorrection;
   #endif
   #if defined (AutoLanding)
     #if defined BattMonitorAutoDescent
@@ -297,6 +330,11 @@ void processFlightControl() {
     // ********************** Process Battery monitor hold **************************
     #if defined BattMonitor && defined BattMonitorAutoDescent
       processBatteryMonitorThrottleAdjustment();
+    #endif
+
+    // ********************** Process FailSafe  **************************
+    #if defined(FailSafe)
+        processFailSafeThrottleAdjustment();
     #endif
 
     // ********************** Process Auto-Descent  **************************

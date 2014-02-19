@@ -253,8 +253,27 @@ void reportVehicleState();
  */
 #if defined (PaintServo)
   #define PAINT_SERVO_UP 160
-  #define PAINT_SERVO_DOWN 70
+  #define PAINT_SERVO_DOWN 60
   int paintServoPosition = PAINT_SERVO_UP;
+#endif
+  //////////////////////////////////////////////////////
+
+
+/**
+ * Failsafe
+ */
+#if defined (FailSafe)
+  #define MAX_CONSTANT_STREAM_FOR_CONNEXION_LOST 10
+  int lastCommand[LASTCHANNEL];
+  int currentConstantCommandStream = 0;
+  bool isNewCommand;
+  bool transmissionLost = false;
+
+  int failSafeStartThrottle = 0;
+  int failSafeThrottleTarget = 1450;
+  unsigned long failSafeStartTime = 0;
+  unsigned long failSafeGoingDownTime = 1000;
+  int failSafeThrottleCorrection = 0;
 #endif
   //////////////////////////////////////////////////////
 
