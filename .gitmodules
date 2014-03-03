@@ -1,0 +1,3 @@
+[submodule "3Dmodels"]
+	path = 3Dmodels
+	url = https://github.com/minotaure/quadcopter-3Dmodels.git
