@@ -28,6 +28,21 @@
 #define ATTITUDE_SCALING (0.75 * PWM2RAD)
 
 
+#if defined(FailSafe)
+/**
+ * failSafeAdjustAttitudeCommand
+ *
+ * Sets the pitch/roll commands to horizontal state
+ */
+ void failSafeAdjustAttitudeCommand()
+ {
+   if ((flightMode == ATTITUDE_FLIGHT_MODE) && transmissionLost) {
+    receiverCommand[XAXIS] = 1500;
+    receiverCommand[YAXIS] = 1500;
+  }
+ }
+ #endif
+
 /**
  * calculateFlightError
  *
@@ -305,6 +320,10 @@ void processMinMaxCommand()
  */
 void processFlightControl() {
   
+  #if defined(FailSafe)
+    failSafeAdjustAttitudeCommand();
+  #endif
+
   // ********************** Calculate Flight Error ***************************
   calculateFlightError();
   

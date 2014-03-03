@@ -154,7 +154,7 @@
 //#define CameraControl
 //#define CameraTXControl  // need to have CameraControl to work
 
-#define PaintServo
+//#define PaintServo
 #define FailSafe
 
 //

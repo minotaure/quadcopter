@@ -270,7 +270,7 @@ void reportVehicleState();
   bool transmissionLost = false;
 
   int failSafeStartThrottle = 0;
-  int failSafeThrottleTarget = 1450;
+  int failSafeThrottleTarget = 1350;
   unsigned long failSafeStartTime = 0;
   unsigned long failSafeGoingDownTime = 1000;
   int failSafeThrottleCorrection = 0;
