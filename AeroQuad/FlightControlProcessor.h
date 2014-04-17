@@ -66,10 +66,22 @@ void calculateFlightError()
     motorAxisCommandRoll   = updatePID(rollAttitudeCmd, gyroRate[XAXIS], &PID[ATTITUDE_GYRO_XAXIS_PID_IDX]);
     motorAxisCommandPitch  = updatePID(pitchAttitudeCmd, -gyroRate[YAXIS], &PID[ATTITUDE_GYRO_YAXIS_PID_IDX]);
   }
-  else {
+  else if (flightMode == RATE_FLIGHT_MODE){
     motorAxisCommandRoll = updatePID(getReceiverSIData(XAXIS), gyroRate[XAXIS]*rotationSpeedFactor, &PID[RATE_XAXIS_PID_IDX]);
     motorAxisCommandPitch = updatePID(getReceiverSIData(YAXIS), -gyroRate[YAXIS]*rotationSpeedFactor, &PID[RATE_YAXIS_PID_IDX]);
   }
+  #if defined (PaintServo)
+  else if (flightMode == WALL_FLIGHT_MODE) {
+    float rollAttitudeCmd  = updatePID((receiverCommand[XAXIS] - receiverZero[XAXIS]) * ATTITUDE_SCALING, kinematicsAngle[XAXIS], &PID[ATTITUDE_XAXIS_PID_IDX]);
+    motorAxisCommandRoll   = updatePID(rollAttitudeCmd, gyroRate[XAXIS], &PID[ATTITUDE_GYRO_XAXIS_PID_IDX]);
+    struct PIDdata* pid = &PID[WALL_THROTTLE_IDX];
+    pid->P = 100/(10*DEG_TO_RAD);
+    pid->I = 0; //60/(5*DEG_TO_RAD*1);
+    pid->D = 0;
+    throttleCmd            = 1300 + updatePID(wallPitchReference, -kinematicsAngle[YAXIS], &PID[WALL_THROTTLE_IDX]);
+    throttle = constrain(throttleCmd,MINCOMMAND,MAXCOMMAND-150);
+  }
+  #endif
 }
 
 /**
@@ -342,6 +354,10 @@ void processFlightControl() {
     // ********************** Process Altitude hold **************************
     #if defined AltitudeHoldBaro || defined AltitudeHoldRangeFinder
       processAltitudeHold();
+    #elif defined (PaintServo)
+      if (flightMode != WALL_FLIGHT_MODE) {
+        throttle = receiverCommand[THROTTLE];
+      }
     #else
       throttle = receiverCommand[THROTTLE];
     #endif
@@ -362,7 +378,13 @@ void processFlightControl() {
     #endif
     
     // ********************** Process throttle correction ********************
-    processThrottleCorrection();
+    #if defined (PaintServo)
+      if (flightMode != WALL_FLIGHT_MODE) {
+        processThrottleCorrection();
+      }
+    #else
+      processThrottleCorrection();
+    #endif
   }
 
   // ********************** Calculate Motor Commands *************************

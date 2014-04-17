@@ -41,6 +41,9 @@ enum {
     GPSPITCH_PID_IDX,
     GPSROLL_PID_IDX,
     GPSYAW_PID_IDX,
+  #endif
+  #if defined PaintServo
+    WALL_THROTTLE_IDX,
   #endif    
 
   LAST_PID_IDX  // keep this definition at the end of this enum

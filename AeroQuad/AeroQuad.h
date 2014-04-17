@@ -55,6 +55,7 @@ int testCommand = 1000;
  */
 #define RATE_FLIGHT_MODE 0
 #define ATTITUDE_FLIGHT_MODE 1
+#define WALL_FLIGHT_MODE 2
 byte previousFlightMode = ATTITUDE_FLIGHT_MODE;
 #define TASK_100HZ 1
 #define TASK_50HZ 2
@@ -255,6 +256,8 @@ void reportVehicleState();
   #define PAINT_SERVO_UP 160
   #define PAINT_SERVO_DOWN 60
   int paintServoPosition = PAINT_SERVO_UP;
+  float wallPitchReference = 10 * DEG_TO_RAD;
+  float throttleCmd = 0;
 #endif
   //////////////////////////////////////////////////////
 

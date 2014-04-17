@@ -286,7 +286,11 @@ void readPilotCommands() {
         flightMode = ATTITUDE_FLIGHT_MODE;
     }
     else {
-        flightMode = RATE_FLIGHT_MODE;
+        #if defined(PaintServo)
+          flightMode = WALL_FLIGHT_MODE;
+        #else
+          flightMode = RATE_FLIGHT_MODE;
+        #endif
     }
     
     if (previousFlightMode != flightMode) {

@@ -667,7 +667,7 @@ void sendSerialTelemetry() {
     #if defined (AltitudeHoldBaro) 
       PrintValueComma(getBaroAltitude()); 
     #else
-      PrintValueComma(0);
+      PrintValueComma(throttleCmd);
     #endif 
     #if defined (AltitudeHoldRangeFinder) 
       SERIAL_PRINTLN(rangeFinderRange[ALTITUDE_RANGE_FINDER_INDEX]);

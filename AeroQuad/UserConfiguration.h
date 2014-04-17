@@ -129,7 +129,7 @@
 //#define MAV_SYSTEM_ID 100		// Needs to be enabled when using MavLink, used to identify each of your copters using MavLink
 								// If you've only got one, leave the default value unchanged, otherwise make sure that each copter has a different ID 
 
-//#define CONFIG_BAUDRATE 19200 // overrides default baudrate for serial port (Configurator/MavLink/WirelessTelemetry)
+//#define CONFIG_BAUDRATE 115200 // overrides default baudrate for serial port (Configurator/MavLink/WirelessTelemetry)
 
 //
 // *******************************************************************************************************************************
@@ -154,7 +154,7 @@
 //#define CameraControl
 //#define CameraTXControl  // need to have CameraControl to work
 
-//#define PaintServo
+#define PaintServo
 #define FailSafe
 
 //

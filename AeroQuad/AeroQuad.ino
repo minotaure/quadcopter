@@ -447,7 +447,7 @@ void setup() {
   #endif
 
   #if defined(PaintServo)
-    servoPaint.attach(11);
+    //servoPaint.attach(11);
     servoPaint.write(paintServoPosition);
   #endif
 
