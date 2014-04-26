@@ -320,7 +320,15 @@ void processFlightControl() {
   calculateFlightError();
   
   // ********************** Update Yaw ***************************************
-  processHeading();
+  #if defined (PaintServo)
+    if (flightMode != WALL_FLIGHT_MODE) {
+      processHeading();
+    } else if (flightMode == WALL_FLIGHT_MODE) {
+      motorAxisCommandYaw = 0;
+    }
+  #else
+    processHeading();
+  #endif
   
   if (frameCounter % THROTTLE_ADJUST_TASK_SPEED == 0) {  // 50hz task
     
