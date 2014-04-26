@@ -59,6 +59,8 @@ void calculateFlightError()
   else if (flightMode == WALL_FLIGHT_MODE) {
     float rollAttitudeCmd  = updatePID((receiverCommand[XAXIS] - receiverZero[XAXIS]) * ATTITUDE_SCALING, kinematicsAngle[XAXIS], &PID[ATTITUDE_XAXIS_PID_IDX]);
     motorAxisCommandRoll   = updatePID(rollAttitudeCmd, gyroRate[XAXIS], &PID[ATTITUDE_GYRO_XAXIS_PID_IDX]);
+    wallCommandPitchAdjustment  = updatePID(wallPitchReference, -kinematicsAngle[YAXIS], &PID[WALL_PITCH_IDX]);
+    motorAxisCommandPitch = wallCommandPitchFeedForward + wallCommandPitchAdjustment;
     wallThrottleAdjustment = updatePID(wallPitchReference, -kinematicsAngle[YAXIS], &PID[WALL_THROTTLE_IDX]);
     wallThrottleAdjustment -= 50/(10*DEG_TO_RAD)*(-gyroRate[YAXIS]);
     throttle = constrain(wallThrottleFeedForward + wallThrottleAdjustment,MINCOMMAND,MAXCOMMAND-150);

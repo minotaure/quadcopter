@@ -273,6 +273,11 @@ void readEEPROM() {
     pid->I = 0; //60/(5*DEG_TO_RAD*1);
     pid->D = 0;
 
+  pid = &PID[WALL_PITCH_IDX];
+    pid->P = 100/(15*DEG_TO_RAD);
+    pid->I = 0;
+    pid->D = 0;
+
   rotationSpeedFactor = readFloat(ROTATION_SPEED_FACTOR_ARD);
   
   // Leaving separate PID reads as commented for now

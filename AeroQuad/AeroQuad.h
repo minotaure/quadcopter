@@ -255,11 +255,19 @@ void reportVehicleState();
 #if defined (PaintServo)
   #define PAINT_SERVO_UP 160
   #define PAINT_SERVO_DOWN 60
+  #define LENGTH_CENTER_TO_WALL (0.40)
+  #define LENGTH_CENTER_TO_GRAVITY (-0.05)
+  #define LENGTH_ARM (0.20)
   int paintServoPosition = PAINT_SERVO_UP;
-  float wallPitchReference = 10 * DEG_TO_RAD;
+  float wallPitchReference = -15 * DEG_TO_RAD;
+  float thrust = 1./cos(wallPitchReference);
+  float dThrust = LENGTH_CENTER_TO_WALL/LENGTH_ARM*thrust - (LENGTH_CENTER_TO_WALL - LENGTH_CENTER_TO_GRAVITY)/LENGTH_ARM*cos(wallPitchReference);
   float feedForwardThrottle = 1500;
   float wallThrottleFeedForward = feedForwardThrottle*sqrt(thrust);
   float wallThrottleAdjustment = 0;
+  float wallCommandPitchFeedForward = feedForwardThrottle*sqrt(thrust+dThrust) - wallThrottleFeedForward;
+  float wallCommandPitchAdjustment = 0;
+
 #endif
   //////////////////////////////////////////////////////
 

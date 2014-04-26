@@ -44,6 +44,7 @@ enum {
   #endif
   #if defined PaintServo
     WALL_THROTTLE_IDX,
+    WALL_PITCH_IDX,
   #endif    
 
   LAST_PID_IDX  // keep this definition at the end of this enum
