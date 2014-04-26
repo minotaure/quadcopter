@@ -257,7 +257,9 @@ void reportVehicleState();
   #define PAINT_SERVO_DOWN 60
   int paintServoPosition = PAINT_SERVO_UP;
   float wallPitchReference = 10 * DEG_TO_RAD;
-  float throttleCmd = 0;
+  float feedForwardThrottle = 1500;
+  float wallThrottleFeedForward = feedForwardThrottle*sqrt(thrust);
+  float wallThrottleAdjustment = 0;
 #endif
   //////////////////////////////////////////////////////
 
