@@ -293,6 +293,14 @@ void readPilotCommands() {
         #endif
     }
     
+    #if defined(FailSafe)
+      if (transmissionLost) {
+        flightMode =  ATTITUDE_FLIGHT_MODE;
+        receiverCommand[XAXIS] = receiverZero[XAXIS];
+        receiverCommand[YAXIS] = receiverZero[YAXIS];
+      }
+    #endif
+    
     if (previousFlightMode != flightMode) {
       zeroIntegralError();
       previousFlightMode = flightMode;
