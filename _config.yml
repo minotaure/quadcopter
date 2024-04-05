@@ -22,7 +22,7 @@ title: Project Icarus
 email: eleurent@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Design and construction of a DIY quadcopter running on Arduino Mega.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/quadcopter" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: eleurent
 github_username:  eleurent
