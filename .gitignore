@@ -1,0 +1,6 @@
+_site
+.sass-cache
+.tweet-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
