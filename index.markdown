@@ -16,9 +16,11 @@ In the beginning of 2014, [Hassan Bouchiba](http://www.mines-paristech.fr/Servic
 | HMC5883L magnetometer |  FlyFun Electronic Speed Controllers 18A | Core made of carbon plates
 | ![IMU](images/imu.gif) | ![Motors](images/motors.gif) | See below |
 
-{% twitter https://twitter.com/rubygems/status/425649775141068800 %}
-{% twitter https://twitter.com/rubygems/status/428620119821266946 %}
-{% twitter https://twitter.com/rubygems/status/441351915444514816 %}
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Second version of the frame for my quadcopter project <a href="http://t.co/C1XK55LiFv">pic.twitter.com/C1XK55LiFv</a></p>&mdash; Edouard Leurent (@eleurent) <a href="https://twitter.com/eleurent/status/425649775141068800?ref_src=twsrc%5Etfw">January 21, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">The frame is finished, and it looks awesome ! <a href="http://t.co/OZwb9WivKI">pic.twitter.com/OZwb9WivKI</a></p>&mdash; Edouard Leurent (@eleurent) <a href="https://twitter.com/eleurent/status/428620119821266946?ref_src=twsrc%5Etfw">January 29, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">New version of the frame for my quadcopter: shorter arms and landing gears <a href="http://t.co/Cts1vmUZN8">pic.twitter.com/Cts1vmUZN8</a></p>&mdash; Edouard Leurent (@eleurent) <a href="https://twitter.com/eleurent/status/441351915444514816?ref_src=twsrc%5Etfw">March 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
 # Media
@@ -60,4 +62,4 @@ Here is the result.
 
 ![Thugdrone](images/thugdrone_2.jpg)
 
-{% twitter https://twitter.com/rubygems/status/477531375797800960 %}
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">You don&#39;t choose the thug life... <a href="http://t.co/WM8I9sRQLV">pic.twitter.com/WM8I9sRQLV</a></p>&mdash; Edouard Leurent (@eleurent) <a href="https://twitter.com/eleurent/status/477531375797800960?ref_src=twsrc%5Etfw">June 13, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
